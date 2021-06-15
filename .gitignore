@@ -8,6 +8,11 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+jsconfig.json
 
 # macOS
 .DS_Store
+
+# get your API Authorization token
+# from https://themoviedb.org 
+app/api/apiToken.js
