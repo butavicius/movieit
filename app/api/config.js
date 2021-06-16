@@ -12,3 +12,4 @@ export default {
   BACKDROP_MEDIUM: IMAGE_BASE + "w780",
   BACKDROP_BIG: IMAGE_BASE + "w1280",
 };
+

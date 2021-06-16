@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import MovieList from "./app/components/Lists/MovieList";
-import MainScreen from "./app/screens/MainScreen";
+import React from "react";
+import BrowseScreen from "./app/screens/BrowseScreen";
 
 export default function App() {
-  return <MainScreen />;
+  return <BrowseScreen />;
 }
