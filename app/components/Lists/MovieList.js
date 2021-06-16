@@ -12,10 +12,11 @@ import MovieSlot from "./MovieSlot";
 function MovieList({ initialSorting }) {
   const [currentSorting, setCurrentSorting] = useState(initialSorting);
   const [currentGenre, setCurrentGenre] = useState(null);
+  const [otherParams, setOtherParams] = useState({});
   const discoverApi = useDiscoverApi(
     currentSorting.params,
     currentGenre?.params,
-    {}
+    otherParams
   );
 
   const flatListRef = useRef();

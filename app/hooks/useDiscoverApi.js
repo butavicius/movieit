@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import discover from "../api/discover";
 
-function useDiscoverApi(sorting, genre, otherParams = {}) {
+function useDiscoverApi(sorting, genre, otherParams) {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
