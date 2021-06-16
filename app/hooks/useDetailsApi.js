@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import details from "../api/details";
 
 function useDetailsApi(movieId) {
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 

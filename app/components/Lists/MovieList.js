@@ -9,13 +9,13 @@ import Button from "../Button";
 import MovieListSeparator from "./MovieListSeparator";
 import MovieSlot from "./MovieSlot";
 
-function MovieList({ initialSorting }) {
+function MovieList({ initialSorting, initialGenre = null }) {
   const [currentSorting, setCurrentSorting] = useState(initialSorting);
-  const [currentGenre, setCurrentGenre] = useState(null);
+  const [currentGenreId, setCurrentGenreId] = useState(initialGenre);
   const [otherParams, setOtherParams] = useState({});
   const discoverApi = useDiscoverApi(
-    currentSorting.params,
-    currentGenre?.params,
+    currentSorting,
+    currentGenreId,
     otherParams
   );
 
@@ -46,24 +46,24 @@ function MovieList({ initialSorting }) {
         >
           {sortings.map((sorting) => (
             <Picker.Item
-              key={sorting.label}
-              label={sorting.label}
-              value={sorting}
+              key={sorting.name}
+              label={sorting.name}
+              value={sorting.value}
             />
           ))}
         </Picker>
 
         <Picker //Genre
           style={styles.picker}
-          selectedValue={currentGenre}
+          selectedValue={currentGenreId}
           onValueChange={(itemValue) => {
-            setCurrentGenre(itemValue);
+            setCurrentGenreId(itemValue);
             scrollBack();
           }}
         >
           <Picker.Item label="All genres" value={null} />
           {genres.map((genre) => (
-            <Picker.Item key={genre.label} label={genre.label} value={genre} />
+            <Picker.Item key={genre.name} label={genre.name} value={genre.id} />
           ))}
         </Picker>
       </View>
@@ -83,7 +83,6 @@ function MovieList({ initialSorting }) {
         ItemSeparatorComponent={MovieListSeparator}
         onEndReached={discoverApi.requestNextPage}
       />
-
     </View>
   );
 }

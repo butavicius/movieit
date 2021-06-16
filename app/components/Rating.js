@@ -6,18 +6,20 @@ import ProgressCircle from "react-native-progress-circle";
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Rating({ score, style }) {
+function Rating({ score, style, radius = 50, fontSize = 30 }) {
   return (
     <View style={style}>
       <ProgressCircle
         percent={score}
-        radius={50}
+        radius={radius}
         borderWidth={8}
         color={colors.gold}
         shadowColor={colors.blue}
         bgColor={colors.black}
       >
-        <Text style={styles.percentage}>{score > 0 ? score : "N/A"}</Text>
+        <Text style={[styles.percentage, { fontSize }]}>
+          {score > 0 ? score : "N/A"}
+        </Text>
       </ProgressCircle>
     </View>
   );
@@ -26,7 +28,7 @@ function Rating({ score, style }) {
 const styles = StyleSheet.create({
   percentage: {
     fontWeight: "bold",
-    fontSize: 30,
+    color: colors.white,
   },
 });
 
