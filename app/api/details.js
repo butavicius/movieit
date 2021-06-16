@@ -1,6 +1,6 @@
 import api from "./client";
 
-const endpoint = "/discover/movie";
+const endpoint = "/movie";
 
 const details = (movieId) => api.get(endpoint + "/" + movieId);
 

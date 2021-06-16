@@ -7,14 +7,13 @@ function useDetailsApi(movieId) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    request();
+    request(movieId);
   }, []);
 
-  const request = async () => {
+  const request = async (...args) => {
     setLoading(true);
-    const response = await details(movieId);
+    const response = await details(...args);
     setError(response.ok ? false : true);
-
     if (response.ok) {
       setMovie(response.data);
     }

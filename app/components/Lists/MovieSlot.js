@@ -1,32 +1,36 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Image, Pressable } from "react-native";
 
-import config from "../../api/config";
+import imageConfig from "../../api/config";
 import colors from "../../config/colors";
 import Rating from "../Rating";
+import Text from "../Text";
 
 function MovieSlot({ imageUrl, title, rating }) {
-  const [ratingVisible, setRatingVisible] = useState(false);
+  const { POSTER_BASE, POSTER_WIDTH, POSTER_HEIGHT } = imageConfig;
+  const [detailsVisible, setDetailsVisible] = useState(false);
   return (
     <View style={styles.container}>
       <Pressable
-        onLongPress={() => setRatingVisible(true)}
-        onPressOut={() => setRatingVisible(false)}
+        onLongPress={() => setDetailsVisible(true)}
+        onPressOut={() => setDetailsVisible(false)}
       >
         <Image
           source={{
-            uri: config.POSTER_MEDIUM + imageUrl,
-            width: 154,
-            height: 231,
+            uri: POSTER_BASE + imageUrl,
+            width: POSTER_WIDTH,
+            height: POSTER_HEIGHT,
           }}
         />
       </Pressable>
-
-      <Rating
-        style={styles.rating}
-        score={rating}
-        visible={ratingVisible}
-      />
+      {detailsVisible && (
+        <>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{title}</Text>
+            <Rating style={styles.rating} score={rating} />
+          </View>
+        </>
+      )}
     </View>
   );
 }
@@ -39,7 +43,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.gold,
     alignItems: "center",
   },
-  rating: { position: "absolute", top: 20 },
+  titleContainer: {
+    position: "absolute",
+    padding: 5,
+    width: "100%",
+    backgroundColor: colors.deep,
+    borderBottomColor: colors.gold,
+    borderBottomWidth: 3,
+    alignItems: "center",
+  },
+  title: { textAlign: "center" },
 });
 
 export default MovieSlot;
