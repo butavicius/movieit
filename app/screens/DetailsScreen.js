@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
 import { initialSortings } from "../api/discoverOptions";
 import { LinearGradient } from "expo-linear-gradient";
@@ -7,15 +7,17 @@ import colors from "../config/colors";
 import MovieBackdrop from "../components/MovieBackdrop";
 import MovieList from "../components/Lists/MovieList";
 import PlayButton from "../components/PlayButton";
+import Player from "../components/Player";
 import Rating from "../components/Rating";
 import Screen from "../components/Screen";
 import useDetailsApi from "../hooks/useDetailsApi";
 import Text from "../components/Text";
 
 function DetailsScreen() {
+  const [playerVisible, setPlayerVisible] = useState(false);
   const detailsApi = useDetailsApi(460465);
   if (!detailsApi.movie) return null;
-  //console.log(detailsApi.movie);
+
   const {
     title,
     vote_average,
@@ -25,6 +27,7 @@ function DetailsScreen() {
     runtime,
     overview,
     credits,
+    videos,
   } = detailsApi.movie;
 
   const releaseYear = release_date.slice(0, 4);
@@ -37,16 +40,37 @@ function DetailsScreen() {
   const director = credits.crew.filter((person) => person.job === "Director")[0]
     .name;
 
-  console.log("director is", director);
-  //console.log(detailsApi.movie);
+  const filteredVideos = videos.results.filter(
+    (video) => video.type === "Trailer" && video.site === "YouTube"
+  );
+
+  console.log(filteredVideos);
+  const trailerKey =
+    filteredVideos.length === 0 ? false : filteredVideos[0].key;
+
   return (
     <Screen style={styles.container}>
+      <Player
+        visible={playerVisible}
+        videoKey={trailerKey}
+        onClose={() => setPlayerVisible(false)}
+      />
       <ScrollView>
         <MovieBackdrop backdropPath={detailsApi.movie.backdrop_path} />
+
+        <View style={styles.separatorPrimary} />
+
         <View style={styles.playButtonContainer}>
-          <PlayButton visible={true} style={styles.playButton} />
+          <PlayButton
+            visible={Boolean(trailerKey)}
+            style={styles.playButton}
+            onPress={() => setPlayerVisible(true)}
+          />
         </View>
-        <View style={styles.headerContainer}>
+
+        <View
+          style={[styles.headerContainer, trailerKey ? { marginTop: 20 } : {}]}
+        >
           <View style={styles.titleDirectorContainer}>
             <View style={styles.titleContainer}>
               <Text style={styles.title}>{title} </Text>
@@ -73,10 +97,7 @@ function DetailsScreen() {
           <Text style={styles.stars}>{stars}</Text>
         </LinearGradient>
 
-
-        <View
-          style={styles.genresContainer}
-        >
+        <View style={styles.genresContainer}>
           <Text style={styles.genres}>
             {genres.map((genre) => genre.name).join(", ")}
           </Text>
@@ -120,8 +141,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 20,
-    marginTop: 25,
+    paddingHorizontal: 20,
+    paddingVertical: 50,
   },
   titleDirectorContainer: {
     flexShrink: 1,
@@ -132,21 +153,23 @@ const styles = StyleSheet.create({
   voteCount: { fontSize: 14, marginTop: 5, textAlign: "center" },
 
   directorContainer: {
-    paddingTop: 20,
+    paddingTop: 30,
     flexDirection: "row",
     alignItems: "baseline",
   },
   director: { color: colors.black, fontSize: 16 },
 
   starsContainer: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
     backgroundColor: colors.blue,
   },
   stars: { color: colors.white, fontSize: 14 },
 
   genresContainer: {
     width: "100%",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
     backgroundColor: colors.black,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -155,17 +178,20 @@ const styles = StyleSheet.create({
   runtime: { color: colors.white, fontSize: 14 },
 
   overviewContainer: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
   },
   overview: {
     textAlign: "justify",
     fontSize: 16,
+    lineHeight: 24,
   },
 
   similarContainer: {
     backgroundColor: colors.gold,
-    padding: 20,
-    marginBottom: 15,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    marginBottom: 25,
   },
   similar: { fontWeight: "bold", color: colors.deep, fontSize: 24 },
 });
