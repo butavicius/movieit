@@ -10,6 +10,7 @@
 
 # Features
 
+- [ ] App is locked in portrait mode at the moment, which is not optimal for trailer video previews. Implemet viewing videos in landscape mode.
 - [ ] Global parameter options. Use React's context to provide global parameters (such as released after... or rating higher than...) to all MovieList components. Implement OptionsScreen and have it available at all times via [TabNavigator](https://reactnavigation.org/docs/tab-based-navigation/)
 - [ ] Implement data loading animations. Navigation ir quite jerky at the moment.
 - [ ] Implement error logging and monitoring with [Bugsnag](https://www.bugsnag.com/) or similar.
