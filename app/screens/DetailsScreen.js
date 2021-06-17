@@ -24,6 +24,7 @@ function DetailsScreen({ route, navigation }) {
 
   const {
     id,
+    backdrop_path,
     title,
     vote_average,
     vote_count,
@@ -63,18 +64,20 @@ function DetailsScreen({ route, navigation }) {
         onClose={() => setPlayerVisible(false)}
       />
       <ScrollView>
-        <MovieBackdrop backdropPath={detailsApi.movie.backdrop_path} />
+        {backdrop_path && (
+          <>
+            <MovieBackdrop backdropPath={detailsApi.movie.backdrop_path} />
+            <View style={styles.separatorPrimary} />
 
-        <View style={styles.separatorPrimary} />
-
-        <View style={styles.playButtonContainer}>
-          <PlayButton
-            visible={Boolean(trailerKey)}
-            style={styles.playButton}
-            onPress={() => setPlayerVisible(true)}
-          />
-        </View>
-
+            <View style={styles.playButtonContainer}>
+              <PlayButton
+                visible={Boolean(trailerKey)}
+                style={styles.playButton}
+                onPress={() => setPlayerVisible(true)}
+              />
+            </View>
+          </>
+        )}
         <View
           style={[styles.headerContainer, trailerKey ? { marginTop: 20 } : {}]}
         >
