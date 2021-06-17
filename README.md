@@ -26,7 +26,8 @@ The app uses [The Movie DB](https://www.themoviedb.org/) API to get all the info
 
 ## How to run?
 
-1. Install
+1. Install [Expo] App from [Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) or [App Store](https://apps.apple.com/us/app/expo-go/id982107779).
+2. Go to this (Expo Project page)[https://expo.io/@simonboot/movieit?release-channel=staging]
 
 ## How to install locally?
 
@@ -37,7 +38,7 @@ git clone https://github.com/simonboot/movieit.git
 cd movieit
 ```
 
-2. Get [The Movie DB](https://www.themoviedb.org/) API Read Access Token and put it in `./app/apiToken.js` file. See `./app/apiToken.sample.js` for inspiration.
+2. Get [The Movie DB](https://www.themoviedb.org/) API Read Access Token and put it in `./app/apiToken.js` file. See [./app/api/apiToken.sample.js](/app/api/apiToken.sample.js) for inspiration.
 
 3. Install dependencies and launch [Expo](https://docs.expo.io) server:
 
@@ -45,3 +46,5 @@ cd movieit
 npm install
 npm start
 ```
+
+4. Follow instructions on screen.
