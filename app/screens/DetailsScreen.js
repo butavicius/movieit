@@ -25,6 +25,8 @@ function DetailsScreen() {
     credits,
   } = detailsApi.movie;
 
+  const releaseYear = release_date.slice(0, 4);
+
   const stars = credits.cast
     .slice(0, 3)
     .map((actor) => actor.name)
@@ -39,18 +41,19 @@ function DetailsScreen() {
       <ScrollView>
         <MovieBackdrop backdropPath={detailsApi.movie.backdrop_path} />
         <View style={styles.detailsContainer}>
-          <View style={styles.header}>
-            <Text style={styles.title}>
-              {title} ({release_date.slice(0, 4)})
-            </Text>
+          <View style={styles.headerContainer}>
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>{title} </Text>
+              <Text style={styles.releaseYear}>({releaseYear})</Text>
+            </View>
             <View>
               <Rating score={vote_average * 10} radius={40} />
               <Text style={styles.voteCount}>{vote_count} votes</Text>
             </View>
           </View>
           <View style={styles.directorContainer}>
-            <Text style={[styles.label, styles.textBlack]}>Director: </Text>
-            <Text style={styles.director}>{director}</Text>
+            <Text style={[styles.label, styles.textBlack]}>Directed by</Text>
+            <Text style={styles.director}> {director}</Text>
           </View>
           <View style={styles.separatorPrimary} />
           <View style={styles.starsContainer}>
@@ -91,16 +94,22 @@ const styles = StyleSheet.create({
   textBlack: { color: colors.black },
   separatorPrimary: { height: 2, backgroundColor: colors.gold },
   separatorSecondary: { height: 2, backgroundColor: colors.deep },
-  title: { fontSize: 30, flexShrink: 1 },
-  header: {
+  titleContainer: { flexDirection: "row", flexWrap: "wrap", flexShrink: 1 },
+  title: { fontSize: 30 },
+  releaseYear: { fontSize: 28, color: colors.blue },
+  headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     padding: 20,
   },
   voteCount: { fontSize: 14, marginTop: 5, textAlign: "center" },
-  directorContainer: { padding: 20, flexDirection: "row" },
-  director: { color: colors.black, fontSize: 14 },
+  directorContainer: {
+    padding: 20,
+    flexDirection: "row",
+    alignItems: "baseline"
+  },
+  director: { color: colors.black, fontSize: 16 },
   starsContainer: {
     padding: 20,
     backgroundColor: colors.blue,
