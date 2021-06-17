@@ -27,7 +27,7 @@ The app uses [The Movie DB](https://www.themoviedb.org/) API to get all the info
 ## How to run?
 
 1. Install [Expo] App from [Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) or [App Store](https://apps.apple.com/us/app/expo-go/id982107779).
-2. Go to this (Expo Project page)[https://expo.io/@simonboot/movieit?release-channel=staging]
+2. Go to this [Expo Project page](https://expo.io/@simonboot/movieit?release-channel=staging).
 
 ## How to install locally?
 
