@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
-import { initialSortings } from "../api/discoverOptions";
 import { LinearGradient } from "expo-linear-gradient";
 
 import Button from "../components/Button";
 import colors from "../config/colors";
+import { initialSortings } from "../api/discoverOptions";
 import MovieBackdrop from "../components/MovieBackdrop";
 import MovieList from "../components/Lists/MovieList";
 import PlayButton from "../components/PlayButton";
