@@ -10,7 +10,7 @@ Warning: This is my first React app and I only had 3 days to do it, so there is 
 
 - :heavy_check_mark: **Android** - Tested, runs OK
 - :heavy_multiplication_x: **iOS** - Did not test. Who knows?
-- :heavy_multiplication_x: **Web** - Does not work at the moment. Build fails because of `react-native-progress-circle` dependency.
+- :heavy_multiplication_x: **Web** - Does not work. Build fails due to `lottie-react-native` and `react-native-progress-circle` deps. 
 
 ## What does it do?
 
