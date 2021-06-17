@@ -20,15 +20,18 @@ function useDiscoverApi(sorting, genreId, otherParams) {
 
     const allParams = {
       sort_by: sorting,
-      with_genres: genreId.toString(),
       page: pagesLoaded + 1,
       "vote_count.gte": 2,
     };
-    // Object.assign(allParams, sorting, {with_genres: genreId.toString}, otherParams, {
-    //   page: pagesLoaded + 1,
-    // });
 
-    setLoading(true);
+    if (genreId)
+      (allParams.with_genres = genreId.toString()),
+
+        // Object.assign(allParams, sorting, {with_genres: genreId.toString}, otherParams, {
+        //   page: pagesLoaded + 1,
+        // });
+
+        setLoading(true);
     const response = await discover(allParams);
     setError(response.ok ? false : true);
 

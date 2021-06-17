@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     alignItems: "center",
   },
-  title: { textAlign: "center" },
+  title: { textAlign: "center", color: colors.white },
 });
 
 export default MovieSlot;
