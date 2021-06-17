@@ -6,8 +6,9 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import Button from "../components/Button";
 import Text from "../components/Text";
+import routes from "../navigation/routes";
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <Screen style={styles.container}>
       <Text style={styles.title}>MOVIE IT!</Text>
@@ -17,7 +18,10 @@ function WelcomeScreen(props) {
         source={require("../../assets/welcome.json")}
         style={styles.animation}
       />
-      <Button title="Browse movies" />
+      <Button
+        title="Browse movies"
+        onPress={() => navigation.navigate(routes.BROWSE)}
+      />
       <Button title="Login" style={styles.disabled} />
       <View></View>
     </Screen>

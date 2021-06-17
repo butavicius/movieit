@@ -6,7 +6,7 @@ import colors from "../../config/colors";
 import Rating from "../Rating";
 import Text from "../Text";
 
-function MovieSlot({ imageUrl, title, rating }) {
+function MovieSlot({ imageUrl, title, rating, onPress }) {
   const { POSTER_BASE, POSTER_WIDTH, POSTER_HEIGHT } = imageConfig;
   const [detailsVisible, setDetailsVisible] = useState(false);
   return (
@@ -14,6 +14,7 @@ function MovieSlot({ imageUrl, title, rating }) {
       <Pressable
         onLongPress={() => setDetailsVisible(true)}
         onPressOut={() => setDetailsVisible(false)}
+        onPress={onPress}
       >
         <Image
           source={{

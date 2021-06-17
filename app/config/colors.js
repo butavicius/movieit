@@ -4,5 +4,5 @@ export default {
   blue: "#003566",
   gold: "#ffc300",
   sun: "#ffd60a",
-  white: "#fffaeb",
+  white: "#ffffff",
 };

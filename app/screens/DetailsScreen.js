@@ -12,10 +12,14 @@ import Rating from "../components/Rating";
 import Screen from "../components/Screen";
 import useDetailsApi from "../hooks/useDetailsApi";
 import Text from "../components/Text";
+import Button from "../components/Button";
+import routes from "../navigation/routes";
 
-function DetailsScreen() {
+function DetailsScreen({ route, navigation }) {
   const [playerVisible, setPlayerVisible] = useState(false);
-  const detailsApi = useDetailsApi(460465);
+
+  const movieId = route.params.id;
+  const detailsApi = useDetailsApi(movieId);
   if (!detailsApi.movie) return null;
 
   const {
@@ -37,8 +41,11 @@ function DetailsScreen() {
     .map((actor) => actor.name)
     .join(", ");
 
-  const director = credits.crew.filter((person) => person.job === "Director")[0]
-    .name;
+  const filteredCrew = credits.crew.filter(
+    (person) => person.job === "Director"
+  );
+
+  const director = filteredCrew.length === 0 ? false : filteredCrew[0].name;
 
   const filteredVideos = videos.results.filter(
     (video) => video.type === "Trailer" && video.site === "YouTube"
@@ -120,6 +127,12 @@ function DetailsScreen() {
             initialGenre={genre.id}
           />
         ))}
+        <View style={styles.backContainer}>
+          <Button
+            title="Back to Homescreen"
+            onPress={() => navigation.navigate(routes.BROWSE)}
+          />
+        </View>
       </ScrollView>
     </Screen>
   );
@@ -194,6 +207,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   similar: { fontWeight: "bold", color: colors.deep, fontSize: 24 },
+  backContainer: { paddingHorizontal: 20 },
 });
 
 export default DetailsScreen;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import discover from "../api/discover";
 
-function useDiscoverApi(sorting, genreId, otherParams) {
+function useDiscoverApi(sorting, genreId) {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ function useDiscoverApi(sorting, genreId, otherParams) {
     setMovies([]);
     setPagesLoaded(0);
     requestNextPage();
-  }, [genreId, sorting, otherParams]);
+  }, [genreId, sorting]);
 
   const requestNextPage = async () => {
     //abort if still loading previous request
@@ -24,14 +24,9 @@ function useDiscoverApi(sorting, genreId, otherParams) {
       "vote_count.gte": 2,
     };
 
-    if (genreId)
-      (allParams.with_genres = genreId.toString()),
+    if (genreId) allParams.with_genres = genreId.toString();
 
-        // Object.assign(allParams, sorting, {with_genres: genreId.toString}, otherParams, {
-        //   page: pagesLoaded + 1,
-        // });
-
-        setLoading(true);
+    setLoading(true);
     const response = await discover(allParams);
     setError(response.ok ? false : true);
 

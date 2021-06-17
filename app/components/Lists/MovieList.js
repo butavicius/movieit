@@ -1,23 +1,23 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
+
 import { View, StyleSheet, FlatList, Text } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { useNavigation } from "@react-navigation/native";
 
-//import { GlobalParamsContext } from "../../contexts/GlobalParams";
-import { genres, sortings } from "../../api/discoverOptions";
-import useDiscoverApi from "../../hooks/useDiscoverApi";
 import Button from "../Button";
+import { genres, sortings } from "../../api/discoverOptions";
 import MovieListSeparator from "./MovieListSeparator";
 import MovieSlot from "./MovieSlot";
+import useDiscoverApi from "../../hooks/useDiscoverApi";
+import routes from "../../navigation/routes";
 
 function MovieList({ initialSorting, initialGenre = null }) {
   const [currentSorting, setCurrentSorting] = useState(initialSorting);
   const [currentGenreId, setCurrentGenreId] = useState(initialGenre);
-  const [otherParams, setOtherParams] = useState({});
-  const discoverApi = useDiscoverApi(
-    currentSorting,
-    currentGenreId,
-    otherParams
-  );
+
+  const navigation = useNavigation();
+
+  const discoverApi = useDiscoverApi(currentSorting, currentGenreId);
 
   const flatListRef = useRef();
   const scrollBack = () => {
@@ -32,9 +32,10 @@ function MovieList({ initialSorting, initialGenre = null }) {
       {discoverApi.error && (
         <>
           <Text>Oops! Could not get data from server.</Text>
-          <Button title="retry" onPress={() => null} />
+          <Button title="retry" onPress={() => discoverApi.requestNextPage()} />
         </>
       )}
+
       <View style={styles.pickerContainer}>
         <Picker //Sorting
           style={styles.picker}
@@ -78,6 +79,9 @@ function MovieList({ initialSorting, initialGenre = null }) {
             title={item.original_title}
             rating={item.vote_average * 10}
             imageUrl={item.poster_path}
+            onPress={() => {
+              navigation.push(routes.DETAILS, { id: item.id });
+            }}
           />
         )}
         ItemSeparatorComponent={MovieListSeparator}
