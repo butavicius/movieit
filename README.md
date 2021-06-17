@@ -8,8 +8,8 @@ Warning: This is my first React app and I only had 3 days to do it, so there is 
 
 ### Platforms
 
-- :heavy_check_mark: Andoid - tested, runs OK
-- :white_check_mark: iOS - who knows? Did not test.
+- :heavy_check_mark: Andoid - Tested, runs OK
+- :white_multiplication_x: iOS - Did not test. Who knows?
 
 ## What does it do?
 
