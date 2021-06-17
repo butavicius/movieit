@@ -1,6 +1,6 @@
 # MOVIE IT!
 ## What is this?
-This is an [React Native](https://reactnative.dev/) application made with [Expo](https://docs.expo.io) framework as an assignment task for React Seals Academy full stack developer course.
+This is an [React Native](https://reactnative.dev/) application made with [Expo](https://docs.expo.io) toolchain as an assignment task for React Seals Academy full stack developer course.
 
 ## What does it do?
 With MOVIE IT you can:
