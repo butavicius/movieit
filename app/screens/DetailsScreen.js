@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
     top: 405,
     alignItems: "center",
   },
+
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -161,6 +162,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 50,
   },
+
   titleDirectorContainer: {
     flexShrink: 1,
   },
