@@ -39,7 +39,7 @@ git clone https://github.com/simonboot/movieit.git
 cd movieit
 ```
 
-2. Get [The Movie DB](https://www.themoviedb.org/) API Read Access Token and put it in `./app/apiToken.js` file. See [sample file](/app/api/apiToken.sample.js) for inspiration.
+2. Get [The Movie DB](https://www.themoviedb.org/) API Read Access Token and put it in `./app/api/apiToken.js` file. See [sample file](/app/api/apiToken.sample.js) for inspiration.
 
 3. Install dependencies and launch [Expo](https://docs.expo.io) server:
 
