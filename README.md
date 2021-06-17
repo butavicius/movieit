@@ -8,7 +8,7 @@ Warning: This is my first React app and I only had 3 days to do it, so there is 
 
 ### Platforms
 
-- :heavy_check_mark: **Andoid** - Tested, runs OK
+- :heavy_check_mark: **Android** - Tested, runs OK
 - :heavy_multiplication_x: **iOS** - Did not test. Who knows?
 
 ## What does it do?
