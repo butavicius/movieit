@@ -8,11 +8,16 @@ function useDiscoverApi(sorting, genreId) {
   const [loading, setLoading] = useState(false);
   const [pagesLoaded, setPagesLoaded] = useState(0);
 
+  useEffect(() => {
+    if (movies.length === 0) {
+      requestNextPage();
+    }
+  }, [movies]);
+
   //Reset loaded movies when params change
   useEffect(() => {
     setMovies([]);
     setPagesLoaded(0);
-    requestNextPage();
   }, [genreId, sorting]);
 
   const requestNextPage = async () => {
@@ -39,7 +44,7 @@ function useDiscoverApi(sorting, genreId) {
         ])
       );
     }
-    setPagesLoaded(pagesLoaded + 1);
+    setPagesLoaded((pagesLoaded) => pagesLoaded + 1);
     setLoading(false);
   };
 
