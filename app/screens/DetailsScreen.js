@@ -3,17 +3,17 @@ import { StyleSheet, ScrollView, View } from "react-native";
 import { initialSortings } from "../api/discoverOptions";
 import { LinearGradient } from "expo-linear-gradient";
 
+import Button from "../components/Button";
 import colors from "../config/colors";
 import MovieBackdrop from "../components/MovieBackdrop";
 import MovieList from "../components/Lists/MovieList";
 import PlayButton from "../components/PlayButton";
 import Player from "../components/Player";
 import Rating from "../components/Rating";
-import Screen from "../components/Screen";
-import useDetailsApi from "../hooks/useDetailsApi";
-import Text from "../components/Text";
-import Button from "../components/Button";
 import routes from "../navigation/routes";
+import Screen from "../components/Screen";
+import Text from "../components/Text";
+import useDetailsApi from "../hooks/useDetailsApi";
 
 function DetailsScreen({ route, navigation }) {
   const [playerVisible, setPlayerVisible] = useState(false);
@@ -23,6 +23,7 @@ function DetailsScreen({ route, navigation }) {
   if (!detailsApi.movie) return null;
 
   const {
+    id,
     title,
     vote_average,
     vote_count,
@@ -51,7 +52,6 @@ function DetailsScreen({ route, navigation }) {
     (video) => video.type === "Trailer" && video.site === "YouTube"
   );
 
-  console.log(filteredVideos);
   const trailerKey =
     filteredVideos.length === 0 ? false : filteredVideos[0].key;
 
@@ -125,11 +125,12 @@ function DetailsScreen({ route, navigation }) {
             key={genre.id}
             initialSorting={initialSortings.popular}
             initialGenre={genre.id}
+            hideMovieId={id}
           />
         ))}
         <View style={styles.backContainer}>
           <Button
-            title="Back to Homescreen"
+            title="Back to Home screen"
             onPress={() => navigation.navigate(routes.BROWSE)}
           />
         </View>
@@ -207,7 +208,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   similar: { fontWeight: "bold", color: colors.deep, fontSize: 24 },
-  backContainer: { paddingHorizontal: 20 },
+  backContainer: { paddingHorizontal: 20, marginBottom: 30 },
 });
 
 export default DetailsScreen;

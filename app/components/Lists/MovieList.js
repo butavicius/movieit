@@ -11,7 +11,11 @@ import MovieSlot from "./MovieSlot";
 import useDiscoverApi from "../../hooks/useDiscoverApi";
 import routes from "../../navigation/routes";
 
-function MovieList({ initialSorting, initialGenre = null }) {
+function MovieList({
+  initialSorting,
+  initialGenre = null,
+  hideMovieId = false,
+}) {
   const [currentSorting, setCurrentSorting] = useState(initialSorting);
   const [currentGenreId, setCurrentGenreId] = useState(initialGenre);
 
@@ -74,16 +78,18 @@ function MovieList({ initialSorting, initialGenre = null }) {
         horizontal
         data={discoverApi.movies}
         keyExtractor={(movie) => movie.id.toString()}
-        renderItem={({ item }) => (
-          <MovieSlot
-            title={item.original_title}
-            rating={item.vote_average * 10}
-            imageUrl={item.poster_path}
-            onPress={() => {
-              navigation.push(routes.DETAILS, { id: item.id });
-            }}
-          />
-        )}
+        renderItem={({ item }) =>
+          item.id !== hideMovieId && (
+            <MovieSlot
+              title={item.original_title}
+              rating={item.vote_average * 10}
+              imageUrl={item.poster_path}
+              onPress={() => {
+                navigation.push(routes.DETAILS, { id: item.id });
+              }}
+            />
+          )
+        }
         ItemSeparatorComponent={MovieListSeparator}
         onEndReached={discoverApi.requestNextPage}
       />

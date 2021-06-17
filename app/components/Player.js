@@ -7,7 +7,6 @@ import colors from "../config/colors";
 
 function Player({ visible, videoKey, onClose }) {
   if (!visible) return null;
-  console.log("got key", videoKey);
   return (
     <Modal transparent>
       <View style={styles.container}>

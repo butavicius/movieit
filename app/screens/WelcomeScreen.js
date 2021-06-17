@@ -1,12 +1,12 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
 
-import Screen from "../components/Screen";
-import colors from "../config/colors";
 import Button from "../components/Button";
-import Text from "../components/Text";
+import colors from "../config/colors";
 import routes from "../navigation/routes";
+import Screen from "../components/Screen";
+import Text from "../components/Text";
 
 function WelcomeScreen({ navigation }) {
   return (

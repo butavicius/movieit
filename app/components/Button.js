@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   text: {
+    padding: 10,
     color: colors.white,
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 16,
     textTransform: "uppercase",
   },
 });
