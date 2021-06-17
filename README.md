@@ -1,4 +1,4 @@
-# MOVIE IT!
+# MOVIE IT! :movie_camera:
 
 ## What is this?
 
