@@ -51,7 +51,11 @@ function useDiscoverApi(sorting, genreId) {
   return { movies, error, loading, requestNextPage };
 }
 
-//Takes array of objects and returns new array without duplicate entries.
+/* Takes array of objects and returns new array without duplicate entries. This
+ * is needed because moviedb API gives inconsistent results across requests with
+ * sort_by:release_date.desc parameter.
+ */
+
 function stripDuplicates(arr) {
   return [...new Set(arr.map((obj) => JSON.stringify(obj)))].map((str) =>
     JSON.parse(str)
