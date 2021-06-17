@@ -16,3 +16,8 @@
 - [ ] Implement error logging and monitoring with [Bugsnag](https://www.bugsnag.com/) or similar.
 - [ ] Implement Vimeo as a trailer video source. At the moment only trailer videos hosted on YouTube are shown.
 - etc...
+
+# Notes
+
+- The Movie DB API is funny if you sort by Newest release date (`https://api.themoviedb.org/3/discover/movie?sort_by=release_date.desc`). This gives 'Tora! Tora! Tora! (release date 1970) as first element. (2021-06-17)
+- Repeated queries for Newest movies at higher page results give inconsistent results across requests. This is why we implement `stripDuplicates()` function on [useDiscoverApi](app/hooks/useDiscoverApi.js). (2021-06-17)
