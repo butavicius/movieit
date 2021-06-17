@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is an [React Native](https://reactnative.dev/) application made with [Expo](https://docs.expo.io) toolchain as an assignment task for React Seals Academy full stack developer course.
+This is a [React Native](https://reactnative.dev/) application made with [Expo](https://docs.expo.io) toolchain as an assignment task for React Seals Academy full stack developer course.
 
 Warning: This is my first React app and I only had 3 days to do it, so there is a lot of room for improvement. Do not consider it to be an example of any sort. [See what I mean here...](TODO.md)
 
