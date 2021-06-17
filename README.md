@@ -6,6 +6,11 @@ This is an [React Native](https://reactnative.dev/) application made with [Expo]
 
 Warning: This is my first React app and I only had 3 days to do it, so there is a lot of room for improvement. Do not consider it to be an example of any sort. [See what I mean here...](TODO.md)
 
+### Platforms
+
+- :heavy_check_mark: Andoid - tested, runs OK
+- :white_check_mark: iOS - who knows? Did not test.
+
 ## What does it do?
 
 With MOVIE IT you can:
@@ -13,11 +18,15 @@ With MOVIE IT you can:
 - Get lists of movies by various categories and genres.
 - Get cool information such as user rating, who's the director, short overview etc.
 - Watch a trailer.
-- **PRO TIP:** Tap and hold a movie poster image while browsing to see user rating and title without leaving home screen.
+- :boom:**PRO TIP:**:boom: Tap and hold a movie poster image while browsing to see user rating and title without leaving home screen.
 
 ## How does it work?
 
 The app uses [The Movie DB](https://www.themoviedb.org/) API to get all the information about movies. Trailer previews are just embeded YouTube videos in [WebView component](https://docs.expo.io/versions/latest/sdk/webview/) of the App.
+
+## How to run?
+
+1. Install
 
 ## How to install locally?
 
