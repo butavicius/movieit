@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
-import config from "../api/config";
+import imageConfig from "../api/config";
 
 function MovieBackdrop({ backdropPath }) {
-  const { BACKDROP_BASE, BACKDROP_HEIGHT, BACKDROP_WIDTH } = config;
+  const { BACKDROP_BASE, BACKDROP_HEIGHT, BACKDROP_WIDTH } = imageConfig;
 
   return (
     <View style={styles.container}>

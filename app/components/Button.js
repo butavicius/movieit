@@ -1,10 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+
 import colors from "../config/colors";
 
 function Button({ title, onPress, style }) {
   return (
-    <TouchableOpacity onPress={onPress} style={{ width: "100%" }}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <View style={[styles.button, style]}>
         <Text style={styles.text}>{title}</Text>
       </View>
@@ -13,6 +14,7 @@ function Button({ title, onPress, style }) {
 }
 
 const styles = StyleSheet.create({
+  container: { width: "100%" },
   button: {
     width: "100%",
     justifyContent: "center",
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
     padding: 10,
     color: colors.white,
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 14,
     textTransform: "uppercase",
   },
 });

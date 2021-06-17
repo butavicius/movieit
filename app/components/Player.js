@@ -1,12 +1,13 @@
 import React from "react";
 import { View, StyleSheet, Modal, TouchableOpacity } from "react-native";
-import { WebView } from "react-native-webview";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { WebView } from "react-native-webview";
 
 import colors from "../config/colors";
 
 function Player({ visible, videoKey, onClose }) {
   if (!visible) return null;
+
   return (
     <Modal transparent>
       <View style={styles.container}>

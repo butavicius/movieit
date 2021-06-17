@@ -9,6 +9,7 @@ import Text from "../Text";
 function MovieSlot({ imageUrl, title, rating, onPress }) {
   const { POSTER_BASE, POSTER_WIDTH, POSTER_HEIGHT } = imageConfig;
   const [detailsVisible, setDetailsVisible] = useState(false);
+
   return (
     <View style={styles.container}>
       <Pressable

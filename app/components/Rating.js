@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-
 import ProgressCircle from "react-native-progress-circle";
 
 import Text from "./Text";

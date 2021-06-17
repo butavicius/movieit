@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "baseline",
   },
-  director: { color: colors.black, fontSize: 16 },
+  director: { color: colors.black },
 
   starsContainer: {
     paddingHorizontal: 20,
@@ -197,7 +197,6 @@ const styles = StyleSheet.create({
   },
   overview: {
     textAlign: "justify",
-    fontSize: 16,
     lineHeight: 24,
   },
 

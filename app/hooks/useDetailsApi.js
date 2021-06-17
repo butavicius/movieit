@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import details from "../api/details";
+
+import detailsApi from "../api/details";
 
 function useDetailsApi(movieId) {
   const [movie, setMovie] = useState(null);
@@ -12,7 +13,7 @@ function useDetailsApi(movieId) {
 
   const request = async (...args) => {
     setLoading(true);
-    const response = await details(...args);
+    const response = await detailsApi(...args);
     setError(response.ok ? false : true);
     if (response.ok) {
       setMovie(response.data);

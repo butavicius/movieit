@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-
 import { View, StyleSheet, FlatList, Text } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useNavigation } from "@react-navigation/native";
@@ -8,8 +7,8 @@ import Button from "../Button";
 import { genres, sortings } from "../../api/discoverOptions";
 import MovieListSeparator from "./MovieListSeparator";
 import MovieSlot from "./MovieSlot";
-import useDiscoverApi from "../../hooks/useDiscoverApi";
 import routes from "../../navigation/routes";
+import useDiscoverApi from "../../hooks/useDiscoverApi";
 
 function MovieList({
   initialSorting,

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import discover from "../api/discover";
+
+import discoverApi from "../api/discover";
 
 function useDiscoverApi(sorting, genreId) {
   const [movies, setMovies] = useState([]);
@@ -27,7 +28,7 @@ function useDiscoverApi(sorting, genreId) {
     if (genreId) allParams.with_genres = genreId.toString();
 
     setLoading(true);
-    const response = await discover(allParams);
+    const response = await discoverApi(allParams);
     setError(response.ok ? false : true);
 
     if (response.ok) {

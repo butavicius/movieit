@@ -1,13 +1,14 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
-import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import Text from "../components/Text";
 
 function PlayButton({ onPress, visible, style }) {
   if (!visible) return null;
+
   return (
     <TouchableOpacity onPress={onPress}>
         <LinearGradient style={[styles.container, style]}colors={[colors.blue, colors.deep]}>
